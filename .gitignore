@@ -1,0 +1,26 @@
+#  bo qua API Key
+.env
+
+# bo qua(Virtual Environment)
+# cac ten pho bien: venv, env
+venv/
+env/
+
+# Bo qua thu muc python tao ra
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Bo qua các file log và database
+*.log
+*.sqlite3
+
+# Bo qua cac file do ide tao ( Vim, Emacs, VSCode)
+*~
+*.swp
+.vscode/
+
+# Bo qua thu muc he thong (macOS, Windows)
+.DS_Store
+Thumbs.db

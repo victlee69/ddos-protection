@@ -1,0 +1,26 @@
+#!/bin/bash
+# SMART INSTALLER - AUTO DETECT OS
+# Repo: https://github.com/victlee69/ddos-protection
+
+REPO="https://raw.githubusercontent.com/victlee69/ddos-protection/main"
+TEMP_DIR="/tmp/ddos_install_$$"
+mkdir -p "$TEMP_DIR" && cd "$TEMP_DIR"
+
+echo "DDoS Protection: Detecting OS..."
+
+if [[ "$OSTYPE" == "linux-gnu"* ]] || [[ -f /etc/os-release ]] || [[ -n "$WSL_DISTRO_NAME" ]]; then
+    echo "Linux/WSL detected. Using install.sh"
+    curl -fsSL "$REPO/install.sh" -o install.sh
+    chmod +x install.sh
+    exec ./install.sh
+elif [[ "$OS" == "Windows_NT" ]] || [[ -n "$WINDIR" ]]; then
+    echo "Windows detected. Using PowerShell..."
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "
+        iwr '$REPO/install.ps1' -OutFile 'install.ps1';
+        & 'install.ps1'
+    "
+    exit $?
+else
+    echo "Unsupported OS: $OSTYPE"
+    exit 1
+fi
