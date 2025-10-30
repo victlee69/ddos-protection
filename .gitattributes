@@ -1,0 +1,17 @@
+# Tu dong xu ly dau xuong dong
+* text=auto
+
+# Linux scripts: dung LF
+*.sh text eol=lf
+
+# Windows scripts: dung CRLF
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Python: dung LF
+*.py text eol=lf
+
+# Anh: khong xu ly
+*.jpg -text
+*.png -text
+*.exe -text
